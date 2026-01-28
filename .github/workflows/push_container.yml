@@ -1,0 +1,18 @@
+---
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Publish Docker image
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  push_to_registries:
+    uses: khanlab/actions/.github/workflows/workflow-release_task-deployDocker.yml@v0.3.2
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
